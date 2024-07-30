@@ -1,0 +1,29 @@
+<section class="d-flex">
+  <h1>Connectez-vous</h1>
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+        required
+      />
+    </div>
+    <div>
+      <label for="password">Mot de passe:</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+        required
+      />
+    </div>
+    <p [ngClass]="isVisible ? 'visible' : 'invisible'">
+      Les identifiants de connexion sont incorrectes
+    </p>
+    <button type="submit">Valider</button>
+  </form>
+</section>
