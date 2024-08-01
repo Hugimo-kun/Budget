@@ -18,7 +18,6 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
     const budgets = this.service.fetchAll();
 
-    // Regrouper les montants par catégorie
     const groupedBudgets = budgets.reduce((acc, budget) => {
       if (!acc[budget.categorie]) {
         acc[budget.categorie] = 0;
@@ -27,7 +26,6 @@ export class ChartComponent implements OnInit {
       return acc;
     }, {} as { [key: string]: number });
 
-    // Créer les tableaux de labels et de données
     const titres = Object.keys(groupedBudgets);
     const montants = Object.values(groupedBudgets);
 
