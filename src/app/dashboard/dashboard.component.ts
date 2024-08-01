@@ -22,8 +22,6 @@ export class DashboardComponent implements OnInit {
   service = inject(BudgetService);
   router = inject(Router);
   solde: number = 0;
-  editingIndex: number | null = null;
-  editingBudget: IBudget | null = null;
 
   ngOnInit(): void {
     if (history.state.isConnected) {
