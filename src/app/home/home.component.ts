@@ -21,6 +21,7 @@ export class HomeComponent {
     password: 'motdepasse1234',
   };
   isVisible: boolean = false;
+  isConnected: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -40,8 +41,14 @@ export class HomeComponent {
       formLogin.password === this.IDENTIFIANTS.password
     ) {
       this.isVisible = false;
-      this.router.navigate(['/dashboard']);
+      this.isConnected = true;
+      this.router.navigate(['/dashboard'], {
+        state: {
+          isConnected: true,
+        },
+      });
     } else {
+      this.isConnected = false;
       this.isVisible = true;
     }
   }

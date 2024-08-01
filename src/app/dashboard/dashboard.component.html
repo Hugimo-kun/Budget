@@ -1,1 +1,58 @@
-<p>dashboard works!</p>
+<section>
+  <h1 class="text-center mb-5">Votre budget</h1>
+  <form [formGroup]="form" (ngSubmit)="addEntry()">
+    <p>Créer une nouvelle entrée:</p>
+    <label for="date">Dates:</label>
+    <input type="date" name="date" id="date" formControlName="date" />
+    <label for="type">Types:</label>
+    <select name="type" id="type" formControlName="type">
+      <option value="Revenu">Revenu</option>
+      <option value="Dépense">Dépense</option>
+    </select>
+    <label for="categorie">Catégorie:</label>
+    <input
+      type="text"
+      name="categorie"
+      id="categorie"
+      formControlName="categorie"
+    />
+    <label for="montant">Montant:</label>
+    <input type="number" id="montant" formControlName="montant" />
+    <button type="submit">Valider</button>
+  </form>
+  <div class="border border-1">
+    <div
+      class="d-flex justify-content-around border border-1 align-items-center"
+    >
+      <p class="w-100 text-center">Date</p>
+      <p class="w-100 text-center">Type</p>
+      <p class="w-100 text-center">Catégorie</p>
+      <p class="w-100 text-center">Montant</p>
+      <p class="w-100 text-center">Solde</p>
+      <p class="w-25 text-center">Option</p>
+    </div>
+    <div class="d-flex flex-column-reverse">
+      <div *ngFor="let budget of budgets; let i = index">
+        <div class="d-flex justify-content-around border border-1">
+          <p class="w-100 text-center">
+            {{ budget.date | date : "dd/MM/yyyy" : "fr" }}
+          </p>
+          <p class="w-100 text-center">{{ budget.type }}</p>
+          <p class="w-100 text-center">{{ budget.categorie }}</p>
+          <p class="w-100 text-center">
+            {{
+              budget.type === "Revenu"
+                ? "+" + budget.montant
+                : "-" + budget.montant
+            }}
+            €
+          </p>
+          <p class="w-100 text-center">{{ getSolde(i) }} €</p>
+          <button (click)="deleteEntry(budgets.indexOf(budget))">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

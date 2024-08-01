@@ -1,0 +1,81 @@
+import { IBudget } from './ibudget';
+
+export const mockBudget: IBudget[] = [
+  {
+    date: new Date('2024-07-01'),
+    categorie: 'Alimentation',
+    titre: 'Courses',
+    montant: 120.5,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-03'),
+    categorie: 'Transport',
+    titre: 'Essence',
+    montant: 50.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-05'),
+    categorie: 'Loisirs',
+    titre: 'Loisir',
+    montant: 15.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-07'),
+    categorie: 'Revenus',
+    titre: 'Salaire',
+    montant: 2000.0,
+    type: 'Revenu',
+  },
+  {
+    date: new Date('2024-07-10'),
+    categorie: 'Logement',
+    titre: 'Loyer',
+    montant: 800.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-12'),
+    categorie: 'Santé',
+    titre: 'Pharmacie',
+    montant: 25.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-15'),
+    categorie: 'Revenus',
+    titre: 'Remboursement',
+    montant: 100.0,
+    type: 'Revenu',
+  },
+  {
+    date: new Date('2024-07-18'),
+    categorie: 'Alimentation',
+    titre: 'Restaurant',
+    montant: 45.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-20'),
+    categorie: 'Transport',
+    titre: 'Abonnement métro',
+    montant: 60.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-22'),
+    categorie: 'Loisirs',
+    titre: 'Concert',
+    montant: 75.0,
+    type: 'Dépense',
+  },
+  {
+    date: new Date('2024-07-25'),
+    categorie: 'Revenus',
+    titre: 'Vente en ligne',
+    montant: 150.0,
+    type: 'Revenu',
+  },
+];
