@@ -8,6 +8,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
   service = inject(BudgetService);
   router = inject(Router);
   solde: number = 0;
+  message: string = '';
 
   ngOnInit(): void {
     if (history.state.isConnected) {
@@ -55,7 +57,9 @@ export class DashboardComponent implements OnInit {
     date: new FormControl(''),
     categorie: new FormControl(''),
     titre: new FormControl(''),
-    montant: new FormControl(''),
+    montant: new FormControl('', {
+      validators: Validators.pattern(/^\d+(\.\d{1,2})?$/),
+    }),
     type: new FormControl(''),
   });
 
@@ -67,8 +71,12 @@ export class DashboardComponent implements OnInit {
       montant: this.form.get('montant')?.value,
       type: this.form.get('type')?.value,
     };
-
-    this.service.addBudget(newEntry);
-    this.getBudget();
+    if (this.form.valid) {
+      this.service.addBudget(newEntry);
+      this.getBudget();
+      this.form.reset();
+    } else {
+      this.message = 'Données invalides';
+    }
   }
 }
