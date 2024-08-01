@@ -1,25 +1,45 @@
 <section>
   <h1 class="text-center mb-5">Votre budget</h1>
-  <form [formGroup]="form" (ngSubmit)="addEntry()">
-    <p>Créer une nouvelle entrée:</p>
-    <label for="date">Dates:</label>
-    <input type="date" name="date" id="date" formControlName="date" />
-    <label for="type">Types:</label>
-    <select name="type" id="type" formControlName="type">
-      <option value="Revenu">Revenu</option>
-      <option value="Dépense">Dépense</option>
-    </select>
-    <label for="categorie">Catégorie:</label>
-    <input
-      type="text"
-      name="categorie"
-      id="categorie"
-      formControlName="categorie"
-    />
-    <label for="montant">Montant:</label>
-    <input type="number" id="montant" formControlName="montant" />
-    <button type="submit">Valider</button>
-  </form>
+  <div class="d-flex justify-content-between align-items-end mb-5">
+    <form [formGroup]="form" (ngSubmit)="addEntry()">
+      <p>Créer une nouvelle entrée:</p>
+      <div>
+        <label for="date">Dates:</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          formControlName="date"
+          required
+        />
+        <label for="type">Types:</label>
+        <select name="type" id="type" formControlName="type">
+          <option value="Revenu">Revenu</option>
+          <option value="Dépense">Dépense</option>
+        </select>
+        <label for="categorie">Catégorie:</label>
+        <select name="type" id="type" formControlName="categorie">
+          <option value="Alimentation">Alimentation</option>
+          <option value="Transport">Transport</option>
+          <option value="Loisirs">Loisirs</option>
+          <option value="Revenus">Revenus</option>
+          <option value="Logement">Logement</option>
+          <option value="Santé">Santé</option>
+        </select>
+        <label for="montant">Montant:</label>
+        <input
+          type="number"
+          id="montant"
+          formControlName="montant"
+          min="0"
+          required
+        />
+        <button type="submit">Valider</button>
+      </div>
+    </form>
+    <a class="btn btn-primary h-100" routerLink="/graph">Voir le graphique</a>
+  </div>
+
   <div class="border border-1">
     <div
       class="d-flex justify-content-around border border-1 align-items-center"
@@ -42,8 +62,8 @@
           <p class="w-100 text-center">
             {{
               budget.type === "Revenu"
-                ? "+" + budget.montant
-                : "-" + budget.montant
+                ? ("+" + budget.montant | number : "1.2-2")
+                : ("-" + budget.montant | number : "1.2-2")
             }}
             €
           </p>

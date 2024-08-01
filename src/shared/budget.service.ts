@@ -8,7 +8,7 @@ import { IBudget } from './ibudget';
 export class BudgetService {
   constructor() {}
 
-  fetchAll() {
+  fetchAll(): IBudget[] {
     return mockBudget;
   }
 

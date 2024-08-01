@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, Pipe } from '@angular/core';
 import { IBudget } from '../../shared/ibudget';
 import { BudgetService } from '../../shared/budget.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -13,7 +13,7 @@ import {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
